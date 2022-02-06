@@ -56,7 +56,7 @@ public class AnethBank {
             oc = input.nextInt();
             if(oc == 1){
                 System.out.println("Consultar saldoe: ");             
-            }else if(oc == 2){   
+            }else if(oc == 2){      
                 System.out.println("O seu extrato bancario: ");             
             }else if(oc == 3){
                 System.out.println("deposito realizado com suceso: ");             
