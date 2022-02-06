@@ -19,7 +19,7 @@ public class AnethBank {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("                               ANETH BANKL                                                            ");
+        System.out.println("                               ANETH BANKL                                     ");
         System.out.println("-------------------------------------------------------------------------------");
         
         Scanner input = new Scanner(System.in);
