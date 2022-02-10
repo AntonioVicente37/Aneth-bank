@@ -9,9 +9,6 @@ package modelpackage.bank;
  *
  * @author Engº António Vicente
  */
-public class ContaPoupanca {
-    //Classe responsavel pela a criacao da conta poupanca
-    private int variuacao;
-    private double limite;
-    
+public class ContaCorrente {
+     
 }

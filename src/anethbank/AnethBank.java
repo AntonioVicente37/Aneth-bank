@@ -37,20 +37,10 @@ public class AnethBank {
         op = input.nextInt();
         
         if(op == 1){
-            System.out.println("\n1.Cadastrar cliente\n2.Listar Clientes");
-            oc = input.nextInt();
-            if(oc == 1){
-                // chamando a funcao responsavel pelo cadastramento de usuario
-                clienteCad();
-                  //System.out.println("Cliente cadastrado com sucesso|");
-            }else if(oc == 2){
-                System.out.println("Lista dos Clientes:");
-                //chamando a funcao responsaver pela listagem de clientes
-                clienteList();
-               /// System.out.println("Conta Criada com sucesso|");
-            }else{
-                System.out.println("Opcao nao existente|");
-            }          
+            //System.out.println("\n1.Cadastrar cliente\n2.Listar Clientes");
+            //oc = input.nextInt();             
+              clienteCad();
+              System.out.println("Cliente cadastrado com sucesso."); 
         }else if(op == 2){
             System.out.println("Conta corrente criada com sucesso");
         }else if(op == 3){
@@ -93,9 +83,10 @@ public class AnethBank {
            int nf = input.nextInt();
            Cliente c = new Cliente(n,nf);
            //adicionando os dados dos clientes na lista
-           ls.add(c);
+           ls.add(c); 
            System.out.println("Deseja cadastrar um outro cliente? s ou S para sim.");
            ct = input.next().charAt(0);
+           System.out.println("Lista de Clientes:");
        }while (ct == 's' || ct == 'S');
        
         for (Cliente i: ls){
@@ -104,7 +95,7 @@ public class AnethBank {
       }
   }
   //Funcao responsavel por listar os clientes
-  public static void clienteList(){
+  public static void contaList(){
       /*for (cliente i: lista){
           System.out.println(i);
       }

@@ -15,11 +15,10 @@ public class Cliente {
     private int nif;
     
     //construtor da classe Cliente
-    public Cliente(String n, int nf) {
+    public Cliente(String n) {
         //this.nome = nome;
         //this.nif = nif;
         this.setNome(n);
-        this.setNif(nf);
     }
     
     public String getNome() {
