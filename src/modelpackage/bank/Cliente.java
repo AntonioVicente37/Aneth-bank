@@ -14,6 +14,14 @@ public class Cliente {
     private String nome;
     private int nif;
     
+    //construtor da classe Cliente
+    public Cliente(String n, int nf) {
+        //this.nome = nome;
+        //this.nif = nif;
+        this.setNome(n);
+        this.setNif(nf);
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -30,5 +38,11 @@ public class Cliente {
         this.nif = nif;
     }
     
+    //Metodo toString para fazer a impressao dos dados dos nossos clientes na tela
+
+    @Override
+    public String toString() { 
+        return "Nome: " + getNome() + "\n" +"Nif: " + getNif()+"\n";
+    }
     
 }

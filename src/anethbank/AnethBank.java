@@ -41,7 +41,11 @@ public class AnethBank {
             if(oc == 1){
                   //System.out.println("Cliente cadastrado com sucesso|");
             }else if(oc == 2){
-                
+                System.out.println("Lista dos Clientes:");
+                Cliente c1 = new Cliente("Tino", 123);
+                System.out.println(c1);
+                Cliente c2 = new Cliente("Jose", 321);
+                System.out.println(c2);
                /// System.out.println("Conta Criada com sucesso|");
             }else{
                 System.out.println("Opcao nao existente|");
