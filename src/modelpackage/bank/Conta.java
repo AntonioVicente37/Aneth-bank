@@ -19,16 +19,17 @@ public class Conta extends Cliente{
     private int iban;
     private double saldo;
     //atributos para o metodo extrato    
-    private String extrato;
+    private double extrato;
     private String descricao;
     private int tipo;
     
     //Construtor da classe conta
-    public Conta(int numconta, int iban, double saldo, String n) {
+    public Conta(int numconta, int iban, double saldo, String n, double extrato) {
         super(n);
         this.numconta = numconta;
         this.iban = iban;
         this.saldo = saldo;
+        this.extrato = extrato;
     }
     //construtor extendido da classe cliente
     public Conta(String n) {
@@ -59,11 +60,11 @@ public class Conta extends Cliente{
         this.saldo = saldo;
     }
 
-    public String getExtrato() {
+    public double getExtrato() {
         return extrato;
     }
 
-    public void setExtrato(String extrato) {
+    public void setExtrato(double extrato) {
         this.extrato = extrato;
     }
 
