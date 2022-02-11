@@ -13,9 +13,9 @@ public class ContaPoupanca extends Conta{
     //Classe responsavel pela a criacao da conta poupanca
     private double variacao;
     private double limite;
-
-    public ContaPoupanca(int numconta, int iban, double saldo, String n, double extrato) {
-        super(numconta, iban, saldo, n, extrato);
+    // trabalhar com o numconta e o ibam e o nome do cliente
+    public ContaPoupanca(int numconta, int iban, double saldo, String n) {
+        super(numconta, iban, saldo, n);
     }
     
     public double getVariacao() {
@@ -36,10 +36,10 @@ public class ContaPoupanca extends Conta{
     
     // funcao responsavel pelo levantamento de valores
     public void levan(double valor){
-        double lm = 30000;
+        double lm = 50000;
         if(this.limite > lm ){
             System.out.println("O seu saldo e de: "+super.getSaldo());
-            System.out.println("O valor a transferir e de : "+valor+" kwz");
+            System.out.println("O valor a levantar e de : "+valor+" kwz");
             super.setSaldo(super.getSaldo() - 1 - valor);
             System.out.println("Saldo: "+super.getSaldo()+" kwz"); 
             super.setExtrato(super.getSaldo());

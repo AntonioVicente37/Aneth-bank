@@ -20,16 +20,15 @@ public class Conta extends Cliente{
     private double saldo;
     //atributos para o metodo extrato    
     private double extrato;
-    private String descricao;
-    private int tipo;
+    
     
     //Construtor da classe conta
-    public Conta(int numconta, int iban, double saldo, String n, double extrato) {
+    public Conta(int numconta, int iban, double saldo, String n) {
         super(n);
         this.numconta = numconta;
         this.iban = iban;
         this.saldo = saldo;
-        this.extrato = extrato;
+        //this.extrato = extrato;
     }
     //construtor extendido da classe cliente
     public Conta(String n) {
@@ -67,27 +66,11 @@ public class Conta extends Cliente{
     public void setExtrato(double extrato) {
         this.extrato = extrato;
     }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
     
     //funcao para retornar data e hora atual do sistema
     private String getDateTime() {
 	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
 	return dateFormat.format(date);
-}
+    }
 }
