@@ -5,6 +5,7 @@
  */
 package modelpackage.bank;
 
+
 /**
  *
  * @author Engº António Vicente
@@ -40,7 +41,7 @@ public class ContaPoupanca extends Conta{
         if(this.limite > lm ){
             System.out.println("O seu saldo e de: "+super.getSaldo());
             System.out.println("O valor a levantar e de : "+valor+" kwz");
-            super.setSaldo(super.getSaldo() - 1 - valor);
+            super.setSaldo(super.getSaldo() - 1);
             System.out.println("Saldo: "+super.getSaldo()+" kwz"); 
             super.setExtrato(super.getSaldo());
         }else{
@@ -52,7 +53,7 @@ public class ContaPoupanca extends Conta{
         this.variacao = 4.4;
         System.out.println("O seu saldo e de: "+super.getSaldo());
         System.out.println("O valor a depositar: "+valor+" kwz");
-        super.setSaldo(super.getSaldo() + valor - 1);
+        super.setSaldo(super.getSaldo() + valor);
         // aplicando a variacao juros no deposito da conta poupanca, aplicando um juros de 4.4%
         super.setSaldo((this.variacao / getSaldo() * 100));
         System.out.println("Saldo: "+super.getSaldo()+" kwz"); 
@@ -67,4 +68,5 @@ public class ContaPoupanca extends Conta{
         return "Nome do cliente: " + getNome() + "\n" +"Numero da Conta: " + getNumconta()+"\n"
               +"IBAN: " + getIban()+"\n"+"Saldo: " + getSaldo()+"kwz\n";
     }
+    
 }

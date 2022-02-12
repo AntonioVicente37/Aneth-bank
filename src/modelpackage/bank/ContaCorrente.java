@@ -22,6 +22,10 @@ public class ContaCorrente extends Conta{
     public ContaCorrente(String n, int numconta, int iban, double saldo) {
         super(n, numconta, iban, saldo);
     }
+
+    public ContaCorrente() {
+        super(null);
+    }
      
     public String Descricao(){
          return "Extrato da sua conta criada no Aneth Bank, espero que o senhora esteja satisfeito como  nossoo  atendimento ate ao momento";
@@ -30,10 +34,10 @@ public class ContaCorrente extends Conta{
      // funcao responsavel pelo levantamento de valores da classse contapoupanca
     public void levan(double valor){
         
-        if(super.getSaldo() >= valor ){
+        if(super.getSaldo() >= valor && valor != 0 ){
             System.out.println("O seu saldo e de: "+super.getSaldo());
             System.out.println("O valor a levantar e de : "+valor+" kwz");
-            super.setSaldo(super.getSaldo() - 1 - valor);
+            super.setSaldo(super.getSaldo() - valor);
             System.out.println("Saldo: "+super.getSaldo()+" kwz"); 
             super.setExtrato(super.getSaldo());
         }else{
@@ -42,17 +46,21 @@ public class ContaCorrente extends Conta{
     }
     // funcao responsavel pelo deposito da classse contapoupanca
    public void deposito(double valor){
-        System.out.println("O seu saldo e de: "+super.getSaldo());
+        if(valor !=0 ){
+            System.out.println("O seu saldo e de: "+super.getSaldo());
         System.out.println("O valor a depositar: "+valor+" kwz");
-        super.setSaldo(super.getSaldo() + valor - 1);
+        super.setSaldo(super.getSaldo() + valor);
         // aplicando a variacao juros no deposito da conta poupanca, aplicando um juros de 4.4%
         System.out.println("Saldo: "+super.getSaldo()+" kwz"); 
         super.setExtrato(super.getSaldo());  
+        }else{
+            System.out.println("Errro ao efectuar o deposito");
+        }
     } 
    
     // funcao responsavel por fazer a consulta do saldo da classse contapoupanca
    public void consultarSaldo(int num){
-       if(getNumconta() == num){
+       if(getExtrato() == num){
            System.out.println("O saldo da sua conta e: "+super.getSaldo()+"kwz");
        }else{
            System.out.println("Conta nao existente");
@@ -81,8 +89,8 @@ public class ContaCorrente extends Conta{
 
     @Override
     public String toString() { 
-        return "Nome do cliente: " + getNome() + "\n" +"Numero da Conta: " + getNumconta()+"\n"
-              +"IBAN: " + getIban()+"\n"+"Saldo: " + getSaldo()+"kwz\n";
+        return "Nome do cliente:"+getNome()+"\t"+"Numero da Conta:"+ getNumconta()+"\t"
+              +"IBAN:"+ getIban()+"\t"+"Saldo:"+ getSaldo()+"kwz\n";
     }
    
    /*public boolean transfe(double valor, int conta){

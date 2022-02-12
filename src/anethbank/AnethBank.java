@@ -49,10 +49,14 @@ public class AnethBank {
              System.out.println("Conta poupanca criada com sucesso");
         }else if(op == 4){
             System.out.println("Qual e o tipo de opercao que deseja executar?"
-                    + "\n1.saldo da conta\n2.extrato da conta\n3.deposito\n4.levantamento\n5.Tranferencia\n6.Pagamentos de servicos");
+                    + "\n1.Consultar saldo da conta\n2.extrato da conta\n3.deposito\n4.levantamento\n5.Tranferencia\n6.Pagamentos de servicos");
             oc = input.nextInt();
+            
             if(oc == 1){
-                System.out.println("Consultar saldoe: ");             
+                ContaCorrente cc = new ContaCorrente();
+                System.out.println("informe o numero da conta: ");
+                int con = input.nextInt();
+                cc.consultarSaldo(con);                           
             }else if(oc == 2){      
                 System.out.println("O seu extrato bancario: ");             
             }else if(oc == 3){
@@ -81,9 +85,9 @@ public class AnethBank {
         // Variavel responsavel por controlar o laco do while 
        char ct = 's';
        do{
-           System.out.println("Digite o nome do cliente: ");
+           System.out.print("Digite o nome do cliente: ");
            String n = input.next();
-           System.out.println("Digite o NIF do cliente");
+           System.out.print("Digite o NIF do cliente: ");
            int nf = input.nextInt();
            Cliente c = new Cliente(n,nf);
            //adicionando os dados dos clientes na lista
@@ -112,13 +116,13 @@ public class AnethBank {
        char ct = 's';
        do{
         Scanner input = new Scanner(System.in);
-        System.out.println("Nome do cliente: ");
+        System.out.print("Nome do cliente: ");
         String n = input.next();
-        System.out.println("Digite o numero da conta: ");
+        System.out.print("Digite o numero da conta: ");
         int nun = input.nextInt();
-        System.out.println("Digite o IBAN: ");
+        System.out.print("Digite o IBAN: ");
         int ib = input.nextInt();
-        System.out.println("Digite o valor inicial: ");
+        System.out.print("Digite o valor inicial: ");
         double val = input.nextDouble();
         ContaCorrente cc = new ContaCorrente(n,nun,ib,val);
         
@@ -130,6 +134,6 @@ public class AnethBank {
        System.out.println("Lista de Contas:");
        for (ContaCorrente i: cl){
           System.out.println(i);            
-        }
+       }
     }
 }
