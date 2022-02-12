@@ -20,6 +20,10 @@ public class Cliente {
         //this.nif = nif;
         this.setNome(n);
     }
+
+    public Cliente(String n, int nf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String getNome() {
         return nome;

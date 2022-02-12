@@ -23,7 +23,7 @@ public class Conta extends Cliente{
     
     
     //Construtor da classe conta
-    public Conta(int numconta, int iban, double saldo, String n) {
+    public Conta(String n, int numconta, int iban, double saldo) {
         super(n);
         this.numconta = numconta;
         this.iban = iban;

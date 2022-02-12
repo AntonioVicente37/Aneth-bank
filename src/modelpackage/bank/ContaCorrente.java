@@ -19,8 +19,8 @@ public class ContaCorrente extends Conta{
     private String tipo = "Conta Corrente" ;
     
     //intanciando o construtor da classe conta para a classe filha conta popanca
-    public ContaCorrente(int numconta, int iban, double saldo, String n, double extrato) {
-        super(numconta, iban, saldo, n);
+    public ContaCorrente(String n, int numconta, int iban, double saldo) {
+        super(n, numconta, iban, saldo);
     }
      
     public String Descricao(){
@@ -51,8 +51,12 @@ public class ContaCorrente extends Conta{
     } 
    
     // funcao responsavel por fazer a consulta do saldo da classse contapoupanca
-   public void consultarSaldo(){
-       System.out.println("O saldo da sua conta e: "+super.getSaldo()+"kwz");
+   public void consultarSaldo(int num){
+       if(getNumconta() == num){
+           System.out.println("O saldo da sua conta e: "+super.getSaldo()+"kwz");
+       }else{
+           System.out.println("Conta nao existente");
+       }
    }
    
 //funcao para retornar data e hora atual do sistema
@@ -73,10 +77,18 @@ public class ContaCorrente extends Conta{
         System.out.println("Saques realizados hoje: " + getExtrato() + "\n");
    }
    
-   public boolean transfe(double valor, int conta){
+   //Metodo toString para fazer a impressao dos dados das contas na tela
+
+    @Override
+    public String toString() { 
+        return "Nome do cliente: " + getNome() + "\n" +"Numero da Conta: " + getNumconta()+"\n"
+              +"IBAN: " + getIban()+"\n"+"Saldo: " + getSaldo()+"kwz\n";
+    }
+   
+   /*public boolean transfe(double valor, int conta){
        if(valor > 0){
            boolean reti = levant(valor);
            
        }
-   }
+   }*/
 }

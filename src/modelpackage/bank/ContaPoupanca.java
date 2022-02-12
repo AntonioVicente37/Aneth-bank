@@ -14,8 +14,8 @@ public class ContaPoupanca extends Conta{
     private double variacao;
     private double limite;
     // trabalhar com o numconta e o ibam e o nome do cliente
-    public ContaPoupanca(int numconta, int iban, double saldo, String n) {
-        super(numconta, iban, saldo, n);
+    public ContaPoupanca(String n, int numconta, int iban, double saldo) {
+        super(n,numconta, iban, saldo);
     }
     
     public double getVariacao() {
@@ -59,4 +59,12 @@ public class ContaPoupanca extends Conta{
         super.setExtrato(super.getSaldo());
         
     }    
+    
+    //Metodo toString para fazer a impressao dos dados das contas na tela
+
+    @Override
+    public String toString() { 
+        return "Nome do cliente: " + getNome() + "\n" +"Numero da Conta: " + getNumconta()+"\n"
+              +"IBAN: " + getIban()+"\n"+"Saldo: " + getSaldo()+"kwz\n";
+    }
 }

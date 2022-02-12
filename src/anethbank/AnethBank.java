@@ -7,6 +7,7 @@ package anethbank;
 import java.util.ArrayList;
 import java.util.Scanner;
 import modelpackage.bank.Cliente;
+import modelpackage.bank.ContaCorrente;
 
 /**
  *
@@ -39,15 +40,16 @@ public class AnethBank {
         if(op == 1){
             //System.out.println("\n1.Cadastrar cliente\n2.Listar Clientes");
             //oc = input.nextInt();             
-              clienteCad();
-              System.out.println("Cliente cadastrado com sucesso."); 
+            ClienteCad();
+            System.out.println("Cliente cadastrado com sucesso."); 
         }else if(op == 2){
-            System.out.println("Conta corrente criada com sucesso");
+            ContaCC();
+            System.out.println("Conta criada com sucesso");
         }else if(op == 3){
              System.out.println("Conta poupanca criada com sucesso");
         }else if(op == 4){
             System.out.println("Qual e o tipo de opercao que deseja executar?"
-                    + "\n1.saldo da conta\n2.extrato da conta\n3.deposito\n4.levantamento\n5.Tranferencia");
+                    + "\n1.saldo da conta\n2.extrato da conta\n3.deposito\n4.levantamento\n5.Tranferencia\n6.Pagamentos de servicos");
             oc = input.nextInt();
             if(oc == 1){
                 System.out.println("Consultar saldoe: ");             
@@ -59,10 +61,12 @@ public class AnethBank {
                 System.out.println("levantamento realizado com sucesso: ");             
             }else if(oc == 5){
                 System.out.println("Transferencia realizada com sucesso: ");             
+            }else if(oc == 6){
+                System.out.println("Pagamentos de servicos");
             }else{
                 System.out.println("Operacao invalida");
             }
-        }else if(op > 5){
+           }else if(op > 6){
             System.out.println("Opcao nao exite no nosso sistema");
         }
         
@@ -70,7 +74,7 @@ public class AnethBank {
     }
     
    //funcao para o cadastro de clientes 
-  public static void clienteCad(){
+  public static void ClienteCad(){
       Scanner input = new Scanner(System.in);
         //Usando a Collection Arraylist para armazenar os dados dos clientes
         ArrayList<Cliente> ls = new ArrayList<Cliente>();
@@ -90,12 +94,11 @@ public class AnethBank {
        }while (ct == 's' || ct == 'S');
        
         for (Cliente i: ls){
-          System.out.println(i);
-                  
-      }
+          System.out.println(i);            
+        }
   }
   //Funcao responsavel por listar os clientes
-  public static void contaList(){
+  public static void ContaList(){
       /*for (cliente i: lista){
           System.out.println(i);
       }
@@ -104,4 +107,29 @@ public class AnethBank {
         Cliente c2 = new Cliente("Jose", 321);
         System.out.println(c2);*/
   }
+  public static void ContaCC(){
+        ArrayList<ContaCorrente> cl = new ArrayList<ContaCorrente>();
+       char ct = 's';
+       do{
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nome do cliente: ");
+        String n = input.next();
+        System.out.println("Digite o numero da conta: ");
+        int nun = input.nextInt();
+        System.out.println("Digite o IBAN: ");
+        int ib = input.nextInt();
+        System.out.println("Digite o valor inicial: ");
+        double val = input.nextDouble();
+        ContaCorrente cc = new ContaCorrente(n,nun,ib,val);
+        
+        cl.add(cc); 
+        System.out.println("Deseja cadastrar uma outra Conta? s ou S para sim.");
+        ct = input.next().charAt(0);       
+       }while (ct == 's' || ct == 'S');
+       
+       System.out.println("Lista de Contas:");
+       for (ContaCorrente i: cl){
+          System.out.println(i);            
+        }
+    }
 }
