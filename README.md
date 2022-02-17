@@ -26,3 +26,5 @@ Bank: responsável pelo armazenar as informações dos clientes, e os arrray.
 Checking: gurda as informações da conta corrente
 
 Savings: guarda as informações da conta poupanca
+
+Desenvolvido por: António  Vicente, Geovani Dias,Mauro Agostinho, Silvano Rodrigues:
