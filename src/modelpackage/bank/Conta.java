@@ -109,11 +109,12 @@ public class Conta{
      //Metodo toString para fazer a impressao dos dados da  nossas contas
     @Override
     public String toString() { 
-        return "Numero de conta: " +this.getNumConta()+ "\n"+
+        return "Lista de Contas no Sistema \n"+
+               "Numero de conta: " +this.getNumConta()+ "\n"+
                "Nome: " + cliente.getNome() +"\n"+
-                "Nif: " + cliente.getNif()+ "\n"+
-                "Iban: " + this.iban +"\n"+
-                "Saldo: " + formatacao.doubleToString(this.getSaldo())+"\n";
+               "Nif: " + cliente.getNif()+ "\n"+
+               "Iban: " + this.iban +"\n"+
+               "Saldo: " + formatacao.doubleToString(this.getSaldo())+"\n";
                 
                 
     }  
