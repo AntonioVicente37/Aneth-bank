@@ -20,7 +20,7 @@ public class Cliente {
     public Cliente(String nome, int nif) {
         this.nome = nome;
         this.nif = nif;
-        contador = + 1;
+        contador += 1;
     }
     //Gerando os nosso getter e setres 
     public String getNome() {
@@ -42,8 +42,7 @@ public class Cliente {
     //Metodo toString para fazer a impressao dos dados dos nossos clientes na tela
     @Override
     public String toString() { 
-        return "Lista de Contas no Sistema \n"+
-               "Nome: " + getNome() + "\n"+
+        return "Nome: " + getNome() + "\n"+
                "Nif: " + getNif()+"\n";
     }           
     

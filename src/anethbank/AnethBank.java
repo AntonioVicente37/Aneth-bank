@@ -111,7 +111,7 @@ public class AnethBank {
                 contasB.add(conta);
                 if(nif == iban || nome == nome){
                     ///Por fazer
-                     System.out.println("Cliente ou NIF ja estao registrados");
+                     //System.out.println("Cliente ou NIF ja estao registrados");
                 }
                      System.out.println("Conta e cliente cadastrados");
                 }else{
@@ -141,14 +141,14 @@ public class AnethBank {
     //Funcao para fazer o deposito
     public static void creditar() {
         //pedindo o numero da conta ao usuario
-        System.out.println("Numero da conta: ");
+        System.out.print("Numero da conta: ");
         int numConta = input.nextInt();
         //armazenando o numero da conta
         Conta conta = encoConta(numConta);
         //verificando se a conta existe
         if(conta != null){
             //recebendo o valor a depositar
-            System.out.println("Qual e o valor que deseja depositar: ");
+            System.out.print("Qual e o valor que deseja depositar: ");
             Double valDepo = input.nextDouble();
             //fazendo o deposito
             conta.creditar(valDepo);
@@ -160,14 +160,14 @@ public class AnethBank {
     //Funcao para fazer levantamento
     public static void debitar() {
          //pedindo o numero da conta ao usuario
-        System.out.println("Numero da conta: ");
+        System.out.print("Numero da conta: ");
         int numConta = input.nextInt();
         //armazenando o numero da conta
         Conta conta = encoConta(numConta);
         //verificando se a conta existe
         if(conta != null){
             //recebendo o valor a levantar
-            System.out.println("Qual e o valor que deseja levantar: ");
+            System.out.print("Qual e o valor que deseja levantar: ");
             Double valLev = input.nextDouble();
             //fazendo o deposito
             conta.debitar(valLev);
@@ -179,7 +179,7 @@ public class AnethBank {
 
     public static void trnsfer() {
         //pedindo e armazenado a conta rementente
-        System.out.println("Digite o numero da conta a transferir: ");
+        System.out.print("Digite o numero da conta a transferir: ");
         int numContR = input.nextInt(); 
         
         //verificando se a conta remetente existe
@@ -187,13 +187,13 @@ public class AnethBank {
         //Verificando se a conta Remetente existe
         if(contaRement != null){            
         //pedindo e armazenado a conta destinatario
-            System.out.println("Digite o numero da conta Destinatario: ");
+            System.out.print("Digite o numero da conta Destinatario: ");
             int numContDest = input.nextInt();
            //verificando se a conta dESTINATARIO existe
             Conta contaDestin = encoConta(numContDest);
             //Verificando se a conta destinatario existe
             if(contaDestin != null){
-                System.out.println("Digite o valor a transferir: ");
+                System.out.print("Digite o valor a transferir: ");
                 Double valor = input.nextDouble();
                 
                 contaRement.transferir(contaDestin, valor);
@@ -206,6 +206,7 @@ public class AnethBank {
        //verificando se tem contas no nosso sistema
        if(contasB.size() > 0){
            //percorrendo e listando todas as contas
+           System.out.println("Lista de Contas");
            for(Conta conta : contasB){
                System.out.println(conta);
            }
@@ -227,82 +228,6 @@ public class AnethBank {
     }
     private static void PagamentoServic() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   //funcao para o cadastro de clientes 
-  /*public static void ClienteCad(){
-       Scanner input = new Scanner(System.in);
-        String nome, nif, iban, tipo= "";
-        double saldo = 0;
-    
-        System.out.print("Digite o teu primeiro nome: ");
-        nome = input.nextLine();
-        System.out.print("Digite o seu NIf: ");
-        nif = input.nextLine();
-        System.out.print("Digite o seu Iban: ");
-        iban = input.nextLine();
-        System.out.print("Informe o seu deposito inicial: ");  
-        saldo = Double.parseDouble(input.nextLine());
-           
-        /// agora estamos a criar um nova conta
-        
-        //comecand a instanciar a classe cliente
-         Cliente cliente = new Cliente(nome,nif,iban,saldo);
-        //adicionando o cliente ao banco
-        Conta conta = new Conta();
-        conta.addClinte(cliente);
-     
-  }*/
-  //Funcao responsavel por listar os clientes
-  /*public static void deposito(){      
-    Scanner input = new Scanner(System.in);
-     int cont = selecConta();     
-     System.out.print("Qual e o valor que deseja depositar: ");
-     double valor = 0;
-     try{
-         valor = Double.parseDouble(input.nextLine());
-     }catch(NumberFormatException e){
-         valor =0;
-     }
-     
-     Conta conta = new Conta();
-     conta.getCliente(cont).depositar();
-      
-  }
-  //fazer levantamento
-   public static void levant(){
-     int conta = selecConta();
-      
-  }*/
-  //Selecionar uma conta para fazer o depoisito
-   /* private static int selecConta() {
-        return 0;
-    }*/
-  /*public static void ContaCC(){
-       // ArrayList<ContaCorrente> cl = new ArrayList<ContaCorrente>();
-       char ct = 's';
-       do{
-        Scanner input = new Scanner(System.in);
-        System.out.print("Nome do cliente: ");
-        String n = input.next();
-        System.out.print("Digite o numero da conta: ");
-        int nun = input.nextInt();
-        System.out.print("Digite o IBAN: ");
-        int ib = input.nextInt();
-        System.out.print("Digite o valor inicial: ");
-        double val = input.nextDouble();
-        Cliente cliente = new Cliente(n,nun,ib,val);
-        conta.addCliente(cliente);
-        //cl.add(cc); 
-        System.out.println("Deseja cadastrar uma outra Conta? s ou S para sim.");
-        ct = input.next().charAt(0);       
-       }while (ct == 's' || ct == 'S');
-       
-      /* System.out.println("Lista de Contas:");
-       for (ContaCorrente i: cl){
-          System.out.println(i);            
-       }
-    }*/
-
-    
+    }    
    
  }

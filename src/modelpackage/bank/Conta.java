@@ -32,7 +32,7 @@ public class Conta{
           this.iban = iban;
           this.saldo = saldo;
           //cada ves que uma conta for criada o nosso contador vai ser incremento
-          contadorContas =+ 1;
+          contadorContas += 1;
     }
 
     public int getNumConta() {
@@ -69,10 +69,9 @@ public class Conta{
      // funcao responsavel pelo levantamento do valores da classse conta
     public void debitar(double valor){        
         if(this.getSaldo() >= valor && valor != 0 ){
-            System.out.println("O seu saldo e de: "+formatacao.doubleToString(this.getSaldo()));
-            System.out.println("O valor a levantar e de : "+formatacao.doubleToString(valor));
+            System.out.println("O valor retirado da sua conta: "+formatacao.doubleToString(valor));
             setSaldo(getSaldo() - valor);
-            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
+            System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
             System.out.println("Levantamento realizado com sucesso");
             //setExtrato(getSaldo());
         }else{
@@ -83,10 +82,9 @@ public class Conta{
     // funcao responsavel pelo deposito da classse conta
    public void creditar(double valor){
         if(valor !=0 ){
-            System.out.println("O seu saldo atual e de: "+formatacao.doubleToString(this.getSaldo()));
-            System.out.println("O valor a depositar: "+formatacao.doubleToString(valor));
+            System.out.println("O valor depositado: "+formatacao.doubleToString(valor));
             setSaldo(getSaldo() + valor);
-            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo()));             
+            System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));           
             System.out.println("Deposito realizado com sucesso");
             //setExtrato(getSaldo());  
         }else{
@@ -103,14 +101,13 @@ public class Conta{
              contaD.saldo = contaD.getSaldo() + valor;
             System.out.println("Transferencia realizado com sucesso");
          }else{             
-            System.out.println("Erro ao realizar a transferencia");
+            System.out.println("Erro ao realizar a transferencia! Valor insuficiente");
          }
     }
      //Metodo toString para fazer a impressao dos dados da  nossas contas
     @Override
     public String toString() { 
-        return "Lista de Contas no Sistema \n"+
-               "Numero de conta: " +this.getNumConta()+ "\n"+
+        return "Numero de conta: " +this.getNumConta()+ "\n"+
                "Nome: " + cliente.getNome() +"\n"+
                "Nif: " + cliente.getNif()+ "\n"+
                "Iban: " + this.iban +"\n"+
