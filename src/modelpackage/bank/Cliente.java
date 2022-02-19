@@ -10,21 +10,19 @@ package modelpackage.bank;
  * @author Engº António Vicente
  */
 public class Cliente {
+    //Variavel contador para contar o numero de clientes
+    private static int contador = 1;
     // iniciando a criacao da classe clinete 
-    private String nome;
-    private int nif;
-    
+    private String nome = "";
+    private int nif = 0;
+ 
     //construtor da classe Cliente
-    public Cliente(String n) {
-        //this.nome = nome;
-        //this.nif = nif;
-        this.setNome(n);
+    public Cliente(String nome, int nif) {
+        this.nome = nome;
+        this.nif = nif;
+        contador = + 1;
     }
-
-    public Cliente(String n, int nf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    //Gerando os nosso getter e setres 
     public String getNome() {
         return nome;
     }
@@ -39,13 +37,13 @@ public class Cliente {
 
     public void setNif(int nif) {
         this.nif = nif;
-    }
+    } 
     
     //Metodo toString para fazer a impressao dos dados dos nossos clientes na tela
-
     @Override
     public String toString() { 
-        return "Nome: " + getNome() + "\n" +"Nif: " + getNif()+"\n";
-    }
+        return "Nome: " + getNome() + "\n"+
+               "Nif: " + getNif()+"\n";
+    }           
     
 }

@@ -5,42 +5,42 @@
  */
 package modelpackage.bank;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import ferramentas.formatacao;
+import java.util.ArrayList;
 
 /**
  *
  * @author Engº António Vicente
  */
-public class Conta extends Cliente{
- 
-    private int numconta;
-    private int iban;
-    private double saldo;
+public class Conta{
+    //Variavel contador para contar o numero de clientes
+    private static int contadorContas = 1;
+    // Atributos da classe conta
+    private int numConta = 0;
+    private int iban = 0;
+    private double saldo = 0.0;
+    private Cliente cliente;
     //atributos para o metodo extrato    
-    private double extrato;
+    /*private double extrato = 0.0;
+    private String descricao;
+    private String tipo = "Conta Corrente" ;*/
     
-    
-    //Construtor da classe conta
-    public Conta(String n, int numconta, int iban, double saldo) {
-        super(n);
-        this.numconta = numconta;
-        this.iban = iban;
-        this.saldo = saldo;
-        //this.extrato = extrato;
-    }
-    //construtor extendido da classe cliente
-    public Conta(String n) {
-        super(n);
-    }
-    
-    public int getNumconta() {
-        return numconta;
+      public Conta(Cliente cliente, int iban, double saldo) {
+          this.numConta = contadorContas;
+          this.cliente = cliente;
+          this.iban = iban;
+          this.saldo = saldo;
+          //cada ves que uma conta for criada o nosso contador vai ser incremento
+          contadorContas =+ 1;
     }
 
-    public void setNumconta(int numconta) {
-        this.numconta = numconta;
+    public int getNumConta() {
+        return numConta;
+    }
+
+    public void setNumConta(int numConta) {
+        this.numConta = numConta;
     }
 
     public int getIban() {
@@ -59,18 +59,89 @@ public class Conta extends Cliente{
         this.saldo = saldo;
     }
 
-    public double getExtrato() {
-        return extrato;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setExtrato(double extrato) {
-        this.extrato = extrato;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
+     // funcao responsavel pelo levantamento do valores da classse conta
+    public void debitar(double valor){        
+        if(this.getSaldo() >= valor && valor != 0 ){
+            System.out.println("O seu saldo e de: "+formatacao.doubleToString(this.getSaldo()));
+            System.out.println("O valor a levantar e de : "+formatacao.doubleToString(valor));
+            setSaldo(getSaldo() - valor);
+            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
+            System.out.println("Levantamento realizado com sucesso");
+            //setExtrato(getSaldo());
+        }else{
+            System.out.println("Erro ao fazer o levantamento, valor insuficiente ou igual a zero");            
+            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
+        }
+    }
+    // funcao responsavel pelo deposito da classse conta
+   public void creditar(double valor){
+        if(valor !=0 ){
+            System.out.println("O seu saldo atual e de: "+formatacao.doubleToString(this.getSaldo()));
+            System.out.println("O valor a depositar: "+formatacao.doubleToString(valor));
+            setSaldo(getSaldo() + valor);
+            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo()));             
+            System.out.println("Deposito realizado com sucesso");
+            //setExtrato(getSaldo());  
+        }else{
+            System.out.println("Errro ao efectuar o deposito, valor igual a zero");            
+            System.out.println("O valor a depositar: "+formatacao.doubleToString(valor));
+        }
+    } 
+     // funcao responsavel pela transferencia dos valor de uma conta a outra
+    public void transferir(Conta contaD, Double valor) {
+         if(this.getSaldo() >= valor && valor != 0 ){             
+             System.out.println("Valor a transferir: "+formatacao.doubleToString(valor));
+             setSaldo(getSaldo() - valor);             
+             //contaD esta a se referir a conta que vai ser feita a transferencia
+             contaD.saldo = contaD.getSaldo() + valor;
+            System.out.println("Transferencia realizado com sucesso");
+         }else{             
+            System.out.println("Erro ao realizar a transferencia");
+         }
+    }
+     //Metodo toString para fazer a impressao dos dados da  nossas contas
+    @Override
+    public String toString() { 
+        return "Numero de conta: " +this.getNumConta()+ "\n"+
+               "Nome: " + cliente.getNome() +"\n"+
+                "Nif: " + cliente.getNif()+ "\n"+
+                "Iban: " + this.iban +"\n"+
+                "Saldo: " + formatacao.doubleToString(this.getSaldo())+"\n";
+                
+                
+    }  
     
-    //funcao para retornar data e hora atual do sistema
-    private String getDateTime() {
-	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	Date date = new Date();
-	return dateFormat.format(date);
-    }
+    /*
+       
+   //funcao para mostrar o extrato da conta
+   public void extrato(){
+        System.out.println("\tEXTRATO");
+        System.out.println("Nome: " + getNome());
+       // System.out.println("Número da conta: " + getNumconta());
+        System.out.printf("Saldo atual: %.2f\n "+ getSaldo());
+        System.out.println("Descricao: "+ Descricao());
+        //System.out.println("Tipo 1: "+ ipo);
+        System.out.println("Data: "+ getDateTime());
+        System.out.println("Saques realizados hoje: " + getExtrato() + "\n");
+   }
+    */
+    
+  /*
+       // funcao responsavel por fazer a consulta do saldo da classse contapoupanca
+   public void consultarSaldo(int num){
+       if(getExtrato() == num){
+           System.out.println("O saldo da sua conta e: "+getSaldo()+"kwz");
+       }else{
+           System.out.println("Conta nao existente");
+       }
+   }
+    */
+    
 }
