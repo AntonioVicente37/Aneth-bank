@@ -12,8 +12,7 @@ import modelpackage.bank.Conta;
 public class AnethBank {
     //Variavei para receber as informacoes vindas do teclado  
     static Scanner input = new Scanner(System.in);
-    static ArrayList<Conta> contasB;
-    
+    static ArrayList<Conta> contasB;    
     static ArrayList<Cliente> clienteAd;
     public static void main(String[] args) {
         //arrays para aramazenar as contas
@@ -31,16 +30,17 @@ public class AnethBank {
      private static void operacao() {  
         // Menu de opcoes do sistema bancario
         int oc = 0;
-        System.out.println("|   opcao 1 - Criar conta           |");
-        System.out.println("|   opcao 2 - Listar contas         |");
-        System.out.println("|   opcao 3 - Conta poupanca        |");
-        System.out.println("|   opcao 4 - Consultar saldo       |");
-        System.out.println("|   opcao 5 - Deposito              |");
-        System.out.println("|   opcao 6 - Levantamento          |");
-        System.out.println("|   opcao 7 - Transferencia         |");
-        System.out.println("|   opcao 8 - Extrato               |");
-        System.out.println("|   opcao 9 - Pagamento de servico  |");
-        System.out.println("|   opcao 0 - Sair                  |");        
+        System.out.println("|   opcao 1  - Criar conta           |");
+        System.out.println("|   opcao 2  - Listar contas         |");
+        System.out.println("|   opcao 3  - Conta poupanca        |");
+        System.out.println("|   opcao 4  - Consultar saldo       |");
+        System.out.println("|   opcao 5  - Deposito              |");
+        System.out.println("|   opcao 6  - Levantamento          |");
+        System.out.println("|   opcao 7  - Transferencia         |");
+        System.out.println("|   opcao 8  - Extrato               |");
+        System.out.println("|   opcao 9  - Pagamento de servico  |");
+        System.out.println("|   opcao 10 - Listar clientes       |");
+        System.out.println("|   opcao 0  - Sair                  |");        
         System.out.print("Escolha uma opcao:");        
         int op = input.nextInt();
         
@@ -80,6 +80,10 @@ public class AnethBank {
             case 9:
              //Chamada da funcao para mostrar o extrato
                 PagamentoServic();
+                break;
+            case 10:
+             //Chamada da funcao para mostrar o extrato
+                ListarCli();
                 break;
             case 0:
                System.out.println("Obrigada por usar os nossos servicos!");
@@ -205,8 +209,10 @@ public class AnethBank {
     public static void listrCont() {
        //verificando se tem contas no nosso sistema
        if(contasB.size() > 0){
-           //percorrendo e listando todas as contas
-           System.out.println("Lista de Contas");
+           //percorrendo e listando todas as contas      
+        System.out.println("-----------------------------------------------------");
+        System.out.println("***************      Lista de Contas  ***************");
+        System.out.println("-----------------------------------------------------");
            for(Conta conta : contasB){
                System.out.println(conta);
            }
@@ -221,7 +227,7 @@ public class AnethBank {
     }
 
     public static void consultSaldo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     public static void extract() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -229,5 +235,21 @@ public class AnethBank {
     private static void PagamentoServic() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }    
+
+    private static void ListarCli() {
+        //verificando se tem clientes no nosso sistema
+       if(clienteAd.size() > 0){
+           //percorrendo e listando todas os clientes           
+        System.out.println("------------------------------------------------------");
+        System.out.println("***************   Lista de Clientes    ***************");
+        System.out.println("------------------------------------------------------");
+           for(Cliente cliente : clienteAd){
+               System.out.println(cliente);
+           }
+       }else{
+           System.out.println("Nao a clientes cadastradas! ");
+       }
+       operacao();
+    }
    
  }
