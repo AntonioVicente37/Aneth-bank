@@ -6,8 +6,8 @@
 package modelpackage.bank;
 
 
+import com.sun.org.apache.xerces.internal.xs.PSVIProvider;
 import ferramentas.formatacao;
-import java.util.ArrayList;
 
 /**
  *
@@ -104,6 +104,25 @@ public class Conta{
             System.out.println("Erro ao realizar a transferencia! Valor insuficiente");
          }
     }
+    //funcao para consultar a saldo da conta de um cliente
+    public void consulSaldo(Conta conta){
+        System.out.println("Sr: "+cliente.getNome());
+        System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
+    }
+    //funcao responsavel por fazer o pagamento dos servicos
+    public void pagaServico(Conta conta, double valor ){
+        if(this.getSaldo() >= valor){
+            System.out.println("O valor do pagamendo foi de: "+formatacao.doubleToString(valor));
+            setSaldo(getSaldo() - valor);
+            System.out.println("Foi debitado da sua conta: "+formatacao.doubleToString(valor));
+            consulSaldo(conta);
+            System.out.println("Pagamento realizado com sucesso");
+            //setExtrato(getSaldo());
+        }else{
+            System.out.println("Erro ao fazer o Pagamento, valor insuficiente");            
+            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
+        }
+    } 
      //Metodo toString para fazer a impressao dos dados da  nossas contas
     @Override
     public String toString() { 

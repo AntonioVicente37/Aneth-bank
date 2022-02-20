@@ -14,10 +14,10 @@ public class Cliente {
     private static int contador = 1;
     // iniciando a criacao da classe clinete 
     private String nome = "";
-    private int nif = 0;
+    private String nif = "";
  
     //construtor da classe Cliente
-    public Cliente(String nome, int nif) {
+    public Cliente(String nome, String nif) {
         this.nome = nome;
         this.nif = nif;
         contador += 1;
@@ -31,11 +31,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getNif() {
+    public String getNif() {
         return nif;
     }
 
-    public void setNif(int nif) {
+    public void setNif(String nif) {
         this.nif = nif;
     } 
     

@@ -100,7 +100,7 @@ public class AnethBank {
         System.out.print("Digite o seu nome: ");
         String nome = input.next();
         System.out.print("Digite o seu NIF: ");
-        int nif = input.nextInt();
+        String nif = input.next();
         //Passando os dados necessarios para criar uma conta
         System.out.print("Digite o seu IBAN: ");
         int iban = input.nextInt();
@@ -113,10 +113,10 @@ public class AnethBank {
                 //adicionando a conta do cliente a classe Conta
                 Conta conta = new Conta(cliente, iban, saldo);
                 contasB.add(conta);
-                if(nif == iban || nome == nome){
+                /*if(nif == iban || nome == nome){
                     ///Por fazer
                      //System.out.println("Cliente ou NIF ja estao registrados");
-                }
+                }*/
                      System.out.println("Conta e cliente cadastrados");
                 }else{
                     System.out.println("Valor insuficiente para fazer a abertura da sua conta Sr: "+nome);
@@ -163,7 +163,7 @@ public class AnethBank {
     }
     //Funcao para fazer levantamento
     public static void debitar() {
-         //pedindo o numero da conta ao usuario
+        //pedindo o numero da conta ao usuario
         System.out.print("Numero da conta: ");
         int numConta = input.nextInt();
         //armazenando o numero da conta
@@ -183,7 +183,7 @@ public class AnethBank {
 
     public static void trnsfer() {
         //pedindo e armazenado a conta rementente
-        System.out.print("Digite o numero da conta a transferir: ");
+        System.out.print("Digite o numero da conta a debitar: ");
         int numContR = input.nextInt(); 
         
         //verificando se a conta remetente existe
@@ -191,7 +191,7 @@ public class AnethBank {
         //Verificando se a conta Remetente existe
         if(contaRement != null){            
         //pedindo e armazenado a conta destinatario
-            System.out.print("Digite o numero da conta Destinatario: ");
+            System.out.print("Digite o numero da conta a creditar: ");
             int numContDest = input.nextInt();
            //verificando se a conta dESTINATARIO existe
             Conta contaDestin = encoConta(numContDest);
@@ -227,13 +227,65 @@ public class AnethBank {
     }
 
     public static void consultSaldo() {
-        
+         //pedindo o numero da conta ao usuario
+        System.out.print("Informe o numero da sua conta: ");
+        int numConta = input.nextInt();
+        //armazenando o numero da conta
+        Conta conta = encoConta(numConta);
+        //verificando se a conta existe
+        if(conta != null){           
+            conta.consulSaldo(conta);
+        }else{
+            System.out.println("Conta nao encontrada! ");
+        }
+        operacao();
     }
     public static void extract() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     private static void PagamentoServic() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double valLev = 0;
+       //pedindo o numero da conta ao usuario
+        System.out.print("Numero da conta: ");
+        int numConta = input.nextInt();
+        //armazenando o numero da conta
+        Conta conta = encoConta(numConta);
+        //verificando se a conta existe
+        if(conta != null){
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("**********   Qual e o servico que deseja solicitar  **********");
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("1) Tratamento de BI, custa 2.000.00 AKZ");
+            System.out.println("2) Tratamento do Registo Criminal, custa 1.500.00 AKZ");
+            System.out.println("3) Tratamento de Atestado Medico, custa 4.000.00 AKZ");
+            //recebendo o valor a levantar
+            System.out.print("Servico: ");
+            int serv = input.nextInt();
+            switch (serv) {
+                case 1:
+                    valLev = 2000;
+                    System.out.println("Voce solicitou o um novo BI");                    
+                    conta.pagaServico(conta, valLev);
+                    System.out.println("Obrigada por usar os nossos servicos");
+                    break;
+                case 2:
+                    valLev = 1500;
+                    System.out.println("Voce solicitou um Registro Criminal");                    
+                    conta.pagaServico(conta, valLev);
+                    System.out.println("Obrigada por usar os nossos servicos");
+                    break;
+                case 3:
+                    valLev = 4000;
+                    System.out.println("Voce solicitou um Atestado Medico");                   
+                    conta.pagaServico(conta, valLev);
+                    System.out.println("Obrigada por usar os nossos servicos");
+                    break;
+                default:   
+                System.out.println("Opcao invalida! Servico nao existente tente novamente!");
+                break;
+            }
+        }
+        operacao();
     }    
 
     private static void ListarCli() {
