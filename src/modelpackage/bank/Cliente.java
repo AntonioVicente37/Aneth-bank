@@ -42,8 +42,8 @@ public class Cliente {
     //Metodo toString para fazer a impressao dos dados dos nossos clientes na tela
     @Override
     public String toString() { 
-        return "Nome: " + getNome() + "\n"+
-               "Nif: " + getNif()+"\n";
-    }           
+        return "Nome: " + getNome() + " "+
+               "Nif: " + getNif()+" ";
+    }            
     
 }

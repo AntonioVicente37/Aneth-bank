@@ -255,9 +255,11 @@ public class AnethBank {
             System.out.println("--------------------------------------------------------------");
             System.out.println("**********   Qual e o servico que deseja solicitar  **********");
             System.out.println("--------------------------------------------------------------");
-            System.out.println("1) Tratamento de BI, custa 2.000.00 AKZ");
-            System.out.println("2) Tratamento do Registo Criminal, custa 1.500.00 AKZ");
-            System.out.println("3) Tratamento de Atestado Medico, custa 4.000.00 AKZ");
+            System.out.println("1) Pagamento de BI, custa 2.000.00 AKZ");
+            System.out.println("2) Pagamento do Registo Criminal, custa 1.500.00 AKZ");
+            System.out.println("3) Pagamento de Atestado Medico, custa 4.000.00 AKZ");
+            System.out.println("4) Pagamento da Zap Fibra, custa 32.000.00 AKZ");
+            System.out.println("5) Compra de Saldo de internet na Unitel, custa 15.000.00 AKZ");
             //recebendo o valor a levantar
             System.out.print("Servico: ");
             int serv = input.nextInt();
@@ -276,6 +278,18 @@ public class AnethBank {
                     break;
                 case 3:
                     valLev = 4000;
+                    System.out.println("Voce solicitou um Atestado Medico");                   
+                    conta.pagaServico(conta, valLev);
+                    System.out.println("Obrigada por usar os nossos servicos");
+                    break;
+                case 4:
+                    valLev = 32000;
+                    System.out.println("Voce solicitou um Atestado Medico");                   
+                    conta.pagaServico(conta, valLev);
+                    System.out.println("Obrigada por usar os nossos servicos");
+                    break;
+                case 5:
+                    valLev = 15000;
                     System.out.println("Voce solicitou um Atestado Medico");                   
                     conta.pagaServico(conta, valLev);
                     System.out.println("Obrigada por usar os nossos servicos");
