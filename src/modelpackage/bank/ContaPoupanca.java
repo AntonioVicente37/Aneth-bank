@@ -76,6 +76,7 @@ public class ContaPoupanca{
     // funcao responsavel pelo levantamento de valores
      public void debitar(double valor){ 
          //aplicando o limite ue o cliente podera levantar da conta poupanca
+         //O nosso limite e o valor que o cliente levantar na primeira operacao com o saldo igual a zero
            setLimite(-10000);         
           if(getSaldo() <= getLimite()){
               System.out.println("Erro ao fazer o levantamento, valor insuficiente ou limite ultrapassado");            
@@ -86,7 +87,7 @@ public class ContaPoupanca{
                     System.out.println("O valor retirado da sua conta: "+formatacao.doubleToString(valor));
                     if(this.getSaldo() >= 0){                       
                         System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
-                    }else if(getSaldo() < 0 && getSaldo() >= getLimite()){     
+                    }else if(getSaldo() < 0 && getSaldo() <= getLimite()){     
                         System.out.println("O seu saldo atual e negativo de: "+formatacao.doubleToString(getSaldo()));      
                     }                   
                }else{

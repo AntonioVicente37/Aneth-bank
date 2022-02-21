@@ -2,6 +2,7 @@
 package anethbank;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import modelpackage.bank.Cliente;
 import modelpackage.bank.Conta;
 import modelpackage.bank.ContaPoupanca;
@@ -118,6 +119,7 @@ public class AnethBank {
                     ///Por fazer
                      //System.out.println("Cliente ou NIF ja estao registrados");
                 }*/
+                 //JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO ");
                  System.out.println("-----------------------------------------------------");
                  System.out.println("********     CADASTRO FEITO COM SUCESSO     *********");
                  System.out.println("-----------------------------------------------------");
@@ -332,7 +334,7 @@ public class AnethBank {
        if(contaP.size() > 0){
         //percorrendo e listando todas as contas poupanca     
         System.out.println("-----------------------------------------------------");
-        System.out.println("********     LISTA DE CONTAS POUPANCAS     ***********");
+        System.out.println("********     LISTA DE CONTAS POUPANCA      ***********");
         System.out.println("-----------------------------------------------------");
            for(ContaPoupanca conta : contaP){
                System.out.println(conta);
