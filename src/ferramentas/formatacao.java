@@ -18,16 +18,17 @@ import java.util.Date;
 public class formatacao {
     //Criando a variavel que fara a formatacao dos valores para Kwz
     static NumberFormat formtvalor = new DecimalFormat("#,##0.00 AKZ");
+   
     
     public static String doubleToString(Double valor){
         return formtvalor.format(valor);
     }
     
     //funcao para retornar data e hora atual do sistema
-    public String getDateTime() {
-	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    /*public String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
 	return dateFormat.format(date);
-    }
+    }*/
     
 }

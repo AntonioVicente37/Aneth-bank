@@ -8,6 +8,9 @@ package modelpackage.bank;
 
 import com.sun.org.apache.xerces.internal.xs.PSVIProvider;
 import ferramentas.formatacao;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -23,18 +26,17 @@ public class Conta{
     private double saldo = 0.0;
     private Cliente cliente;
     //atributos para o metodo extrato    
-    /*private double extrato = 0.0;
-    private String descricao;
-    private String tipo = "Conta Corrente" ;*/
+    private int extrato = 0;
     
-      public Conta(Cliente cliente, double saldo) {
+    public Conta(Cliente cliente, double saldo) {
           this.numConta = contadorContas;
           this.cliente = cliente;
           this.iban = contadorIban;
           this.saldo = saldo;
           //cada ves que uma conta for criada o nosso contador vai ser incremento
           contadorContas += 1;         
-          contadorIban =+ 2;
+          contadorIban += 2;
+          extrato = 0;
     }
 
     public int getNumConta() {
@@ -76,6 +78,7 @@ public class Conta{
             System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
             //System.out.println("Levantamento realizado com sucesso");
             //setExtrato(getSaldo());
+            this.extrato ++;
         }else{
             System.out.println("Erro ao fazer o levantamento, valor insuficiente ou igual a zero");            
             System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
@@ -88,7 +91,8 @@ public class Conta{
             setSaldo(getSaldo() + valor);
             System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));           
             //System.out.println("Deposito realizado com sucesso");
-            //setExtrato(getSaldo());  
+            //setExtrato(getSaldo());              
+            this.extrato ++;
         }else{
             System.out.println("Errro ao efectuar o deposito, valor igual a zero");            
             System.out.println("O valor a depositar: "+formatacao.doubleToString(valor));
@@ -100,7 +104,8 @@ public class Conta{
              System.out.println("Valor a transferir: "+formatacao.doubleToString(valor));
              setSaldo(getSaldo() - valor);             
              //contaD esta a se referir a conta que vai ser feita a transferencia
-             contaD.saldo = contaD.getSaldo() + valor;
+             contaD.saldo = contaD.getSaldo() + valor;             
+            this.extrato ++;
          }else{             
             System.out.println("Erro ao realizar a transferencia! Valor insuficiente");
          }
@@ -108,7 +113,8 @@ public class Conta{
     //funcao para consultar a saldo da conta de um cliente
     public void consulSaldo(Conta conta){
         System.out.println("Sr: "+cliente.getNome());
-        System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
+        System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));        
+        this.extrato ++;
     }
     //funcao responsavel por fazer o pagamento dos servicos
     public void pagaServico(Conta conta, double valor ){
@@ -118,12 +124,31 @@ public class Conta{
             System.out.println("Foi debitado da sua conta: "+formatacao.doubleToString(valor));
             consulSaldo(conta);
             System.out.println("Pagamento realizado com sucesso");
-            //setExtrato(getSaldo());
+            //setExtrato(getSaldo());            
+            this.extrato ++;
         }else{
             System.out.println("Erro ao fazer o Pagamento, valor insuficiente");            
             System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
         }
     } 
+    
+           
+    //funcao para mostrar o extrato da conta
+    public void consultaExtrato(Conta conta){
+         System.out.println("\tEXTRATO BANCARIO");         
+         System.out.println("Numero de Conta: " + getNumConta());
+         System.out.println("Nome do Cliente: " + cliente.getNome());
+         System.out.println("Saldo: "+ formatacao.doubleToString(this.getSaldo()));
+         System.out.println("Descricao: "+ "Consuta do extrato da conta");
+         System.out.println("Tipo 1: "+ "Extrato da conta corrente");
+         System.out.println("Data: "+getDateTime());
+         System.out.println("Operacoes Realizadas: " + this.extrato + "\n");
+    }
+    public String getDateTime() {
+         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+         Date date = new Date();
+         return dateFormat.format(date);
+     }
      //Metodo toString para fazer a impressao dos dados da  nossas contas
     @Override
     public String toString() { 
@@ -133,24 +158,6 @@ public class Conta{
                "Saldo: " + formatacao.doubleToString(this.getSaldo())+" ";
                 
                 
-    }  
-    
-    /*
-       
-   //funcao para mostrar o extrato da conta
-   public void extrato(){
-        System.out.println("\tEXTRATO");
-        System.out.println("Nome: " + getNome());
-       // System.out.println("Número da conta: " + getNumconta());
-        System.out.printf("Saldo atual: %.2f\n "+ getSaldo());
-        System.out.println("Descricao: "+ Descricao());
-        //System.out.println("Tipo 1: "+ ipo);
-        System.out.println("Data: "+ getDateTime());
-        System.out.println("Saques realizados hoje: " + getExtrato() + "\n");
-   }
-    */
-    
-  /*
-      
+    }      
     
 }

@@ -81,16 +81,16 @@ public class ContaPoupanca{
               System.out.println("Erro ao fazer o levantamento, valor insuficiente ou limite ultrapassado");            
               System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
           }else{                 
-               if(getLimite() < valor){
-                   System.out.println("Erro ao fazer o levantamento, voce ultrapassado o seu limite");   
-               }else{
+               if(getLimite() <= valor){
                     setSaldo(getSaldo() - valor);                  
                     System.out.println("O valor retirado da sua conta: "+formatacao.doubleToString(valor));
                     if(this.getSaldo() >= 0){                       
                         System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
                     }else if(getSaldo() < 0 && getSaldo() >= getLimite()){     
                         System.out.println("O seu saldo atual e negativo de: "+formatacao.doubleToString(getSaldo()));      
-                    }
+                    }                   
+               }else{
+                   System.out.println("Erro ao fazer o levantamento, voce ultrapassado o seu limite");   
                }
         }
     }

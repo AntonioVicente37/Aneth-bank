@@ -425,7 +425,20 @@ public class AnethBank {
         operacao();
     }
     public static void extract() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //pedindo o numero da conta ao usuario
+            System.out.print("Informe o numero de Conta Corrente: ");
+            int numConta = input.nextInt();
+            //armazenando o numero da conta
+            Conta conta = encoConta(numConta);
+            //verificando se a conta existe
+            if(conta != null){
+                conta.consultaExtrato(conta);
+            }else{
+                System.out.println("-----------------------------------------------------");
+                System.out.println("********       CONTA NAO ENCONTRADA         *********");
+                System.out.println("-----------------------------------------------------");
+            }
+            operacao();
     }
     //funcao responsavel por fazer o pagamentos dos servicos
     private static void PagamentoServic() {
