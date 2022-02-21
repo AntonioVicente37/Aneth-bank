@@ -16,6 +16,7 @@ import ferramentas.formatacao;
 public class Conta{
     //Variavel contador para contar o numero de clientes
     private static int contadorContas = 1;
+    private static int contadorIban = 1203199;
     // Atributos da classe conta
     private int numConta = 0;
     private int iban = 0;
@@ -26,13 +27,14 @@ public class Conta{
     private String descricao;
     private String tipo = "Conta Corrente" ;*/
     
-      public Conta(Cliente cliente, int iban, double saldo) {
+      public Conta(Cliente cliente, double saldo) {
           this.numConta = contadorContas;
           this.cliente = cliente;
-          this.iban = iban;
+          this.iban = contadorIban;
           this.saldo = saldo;
           //cada ves que uma conta for criada o nosso contador vai ser incremento
-          contadorContas += 1;
+          contadorContas += 1;         
+          contadorIban =+ 2;
     }
 
     public int getNumConta() {
@@ -72,7 +74,7 @@ public class Conta{
             System.out.println("O valor retirado da sua conta: "+formatacao.doubleToString(valor));
             setSaldo(getSaldo() - valor);
             System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
-            System.out.println("Levantamento realizado com sucesso");
+            //System.out.println("Levantamento realizado com sucesso");
             //setExtrato(getSaldo());
         }else{
             System.out.println("Erro ao fazer o levantamento, valor insuficiente ou igual a zero");            
@@ -85,7 +87,7 @@ public class Conta{
             System.out.println("O valor depositado: "+formatacao.doubleToString(valor));
             setSaldo(getSaldo() + valor);
             System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));           
-            System.out.println("Deposito realizado com sucesso");
+            //System.out.println("Deposito realizado com sucesso");
             //setExtrato(getSaldo());  
         }else{
             System.out.println("Errro ao efectuar o deposito, valor igual a zero");            
@@ -99,7 +101,6 @@ public class Conta{
              setSaldo(getSaldo() - valor);             
              //contaD esta a se referir a conta que vai ser feita a transferencia
              contaD.saldo = contaD.getSaldo() + valor;
-            System.out.println("Transferencia realizado com sucesso");
          }else{             
             System.out.println("Erro ao realizar a transferencia! Valor insuficiente");
          }
@@ -128,7 +129,7 @@ public class Conta{
     public String toString() { 
         return "Numero de conta: " +this.getNumConta()+ " "+
                "Nome: " + cliente.getNome() +" "+
-               "Iban: " + this.iban +" "+
+               "Iban: " + this.getIban()+" "+
                "Saldo: " + formatacao.doubleToString(this.getSaldo())+" ";
                 
                 
@@ -150,14 +151,6 @@ public class Conta{
     */
     
   /*
-       // funcao responsavel por fazer a consulta do saldo da classse contapoupanca
-   public void consultarSaldo(int num){
-       if(getExtrato() == num){
-           System.out.println("O saldo da sua conta e: "+getSaldo()+"kwz");
-       }else{
-           System.out.println("Conta nao existente");
-       }
-   }
-    */
+      
     
 }

@@ -13,7 +13,8 @@ import ferramentas.formatacao;
  * @author Engº António Vicente
  */
 public class ContaPoupanca{
-    private static int contadorP = 0;
+    private static int contadorP = 1;    
+    private static int contadorIban = 2022014;
     //Classe responsavel pela a criacao da conta poupanca
     private Cliente cliente;
     private int iban = 0;
@@ -22,12 +23,13 @@ public class ContaPoupanca{
     private double limite = 0.0;
     private int numConta = 0;
  
-    public ContaPoupanca(Cliente cliente, int iban, double saldo) {
+    public ContaPoupanca(Cliente cliente, double saldo) {
         this.cliente = cliente;
-        this.iban = iban;
+        this.iban = contadorIban;
         this.saldo = saldo;
         this.numConta = contadorP;
         contadorP +=1;
+        contadorIban += 3;
     }
     
     public int getIban() {
@@ -72,16 +74,24 @@ public class ContaPoupanca{
     }
     
     // funcao responsavel pelo levantamento de valores
-     public void debitar(double valor){        
-        if(this.getSaldo() >= valor && valor != 0 ){
-            System.out.println("O valor retirado da sua conta: "+formatacao.doubleToString(valor));
-            setSaldo(getSaldo() - valor);
-            System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
-            System.out.println("Levantamento realizado com sucesso");
-            //setExtrato(getSaldo());
-        }else{
-            System.out.println("Erro ao fazer o levantamento, valor insuficiente ou igual a zero");            
-            System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
+     public void debitar(double valor){ 
+         //aplicando o limite ue o cliente podera levantar da conta poupanca
+           setLimite(-10000);         
+          if(getSaldo() <= getLimite()){
+              System.out.println("Erro ao fazer o levantamento, valor insuficiente ou limite ultrapassado");            
+              System.out.println("Saldo: "+formatacao.doubleToString(this.getSaldo())); 
+          }else{                 
+               if(getLimite() < valor){
+                   System.out.println("Erro ao fazer o levantamento, voce ultrapassado o seu limite");   
+               }else{
+                    setSaldo(getSaldo() - valor);                  
+                    System.out.println("O valor retirado da sua conta: "+formatacao.doubleToString(valor));
+                    if(this.getSaldo() >= 0){                       
+                        System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));
+                    }else if(getSaldo() < 0 && getSaldo() >= getLimite()){     
+                        System.out.println("O seu saldo atual e negativo de: "+formatacao.doubleToString(getSaldo()));      
+                    }
+               }
         }
     }
     // funcao responsavel pelo deposito
@@ -89,10 +99,11 @@ public class ContaPoupanca{
         if(valor !=0 ){
             System.out.println("O valor depositado: "+formatacao.doubleToString(valor));
             setSaldo(getSaldo() + valor);
-            setVariacao(4.0);
-            setSaldo((getSaldo() + getVariacao()) * 100);
+            setVariacao(4);
+            //aplicando a variacao de 4% na conta poupanca
+            setSaldo(getSaldo() + ((getSaldo() * getVariacao()) / 100));
             System.out.println("O seu saldo atual: "+formatacao.doubleToString(this.getSaldo()));           
-            System.out.println("Deposito realizado com sucesso");
+            //System.out.println("Deposito realizado com sucesso");
             //setExtrato(getSaldo());  
         }else{
             System.out.println("Errro ao efectuar o deposito, valor igual a zero");            
@@ -108,7 +119,7 @@ public class ContaPoupanca{
     public String toString() { 
         return "Numero de conta: " +this.getNumConta()+ " "+
                "Nome: " + cliente.getNome() +" "+
-               "Iban: " + this.iban +" "+
+               "Iban: " + this.getIban() +" "+
                "Saldo: " + formatacao.doubleToString(this.getSaldo())+" ";
                 
                 

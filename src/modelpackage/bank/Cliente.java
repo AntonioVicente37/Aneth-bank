@@ -15,11 +15,13 @@ public class Cliente {
     // iniciando a criacao da classe clinete 
     private String nome = "";
     private String nif = "";
+    private int numClie = 0;
  
     //construtor da classe Cliente
     public Cliente(String nome, String nif) {
         this.nome = nome;
         this.nif = nif;
+        this.numClie = contador;
         contador += 1;
     }
     //Gerando os nosso getter e setres 
@@ -31,6 +33,16 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public int getNumClie() {
+        return numClie;
+    }
+
+    public void setNumClie(int numClie) {
+        this.numClie = numClie;
+    }
+    
+    
+    
     public String getNif() {
         return nif;
     }
@@ -42,8 +54,9 @@ public class Cliente {
     //Metodo toString para fazer a impressao dos dados dos nossos clientes na tela
     @Override
     public String toString() { 
-        return "Nome: " + getNome() + " "+
-               "Nif: " + getNif()+" ";
+        return  "Numero de cliente: " + getNumClie()+ " " +
+                "Nome: " + getNome() + " "+
+                 "Nif: " + getNif()+" ";
     }            
     
 }

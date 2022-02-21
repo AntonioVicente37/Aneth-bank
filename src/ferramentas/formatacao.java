@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class formatacao {
     //Criando a variavel que fara a formatacao dos valores para Kwz
-    static NumberFormat formtvalor = new DecimalFormat("#,###.00 AKZ");
+    static NumberFormat formtvalor = new DecimalFormat("#,##0.00 AKZ");
     
     public static String doubleToString(Double valor){
         return formtvalor.format(valor);
